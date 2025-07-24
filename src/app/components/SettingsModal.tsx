@@ -1,8 +1,19 @@
 "use client";
 
 import { useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 interface SettingsModalProps {
+  open: boolean;
   balance: number;
   settings: {
     defaultRiskPercentage: number;
@@ -19,6 +30,7 @@ interface SettingsModalProps {
 }
 
 export default function SettingsModal({
+  open,
   balance,
   settings,
   onClose,
@@ -87,107 +99,98 @@ export default function SettingsModal({
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
-      <div className="card" style={{ maxWidth: "28rem", width: "100%" }}>
-        <h2 className="text-xl font-bold mb-6">Cài đặt</h2>
+    <Dialog open={open} onOpenChange={onClose}>
+      <DialogContent className="w-[95vw] max-w-md mx-auto">
+        <DialogHeader>
+          <DialogTitle>Cài đặt</DialogTitle>
+        </DialogHeader>
 
-        <form onSubmit={handleSave} className="flex-col gap-4">
-          <div className="mb-4">
-            <label htmlFor="settingsBalance" className="label">
-              Số dư tài khoản (USDT)
-            </label>
-            <input
+        <form onSubmit={handleSave} className="space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="settingsBalance">Số dư tài khoản (USDT)</Label>
+            <Input
               id="settingsBalance"
               type="number"
               step="0.01"
               min="0"
-              className="input"
               value={newBalance}
               onChange={(e) => setNewBalance(e.target.value)}
             />
           </div>
 
-          <div className="mb-4">
-            <label htmlFor="defaultRiskPercentage" className="label">
-              Mức rủi ro mặc định (%)
-            </label>
-            <input
+          <div className="space-y-2">
+            <Label htmlFor="defaultRiskPercentage">Mức rủi ro mặc định (%)</Label>
+            <Input
               id="defaultRiskPercentage"
               type="number"
               step="0.1"
               min="0.1"
-              className="input"
               value={riskPercentage}
               onChange={(e) => setRiskPercentage(e.target.value)}
             />
           </div>
 
-          <div className="mb-4">
-            <label htmlFor="defaultLeverage" className="label">
-              Đòn bẩy mặc định (x)
-            </label>
-            <input
+          <div className="space-y-2">
+            <Label htmlFor="defaultLeverage">Đòn bẩy mặc định (x)</Label>
+            <Input
               id="defaultLeverage"
               type="number"
               step="0.1"
               min="1"
-              className="input"
               value={leverage}
               onChange={(e) => setLeverage(e.target.value)}
             />
           </div>
 
-          <div className="mb-4">
-            <label htmlFor="defaultStopLossPercentage" className="label">
-              SL mặc định (%)
-            </label>
-            <input
+          <div className="space-y-2">
+            <Label htmlFor="defaultStopLossPercentage">SL mặc định (%)</Label>
+            <Input
               id="defaultStopLossPercentage"
               type="number"
               step="0.1"
               min="0.1"
-              className="input"
               value={stopLossPercentage}
               onChange={(e) => setStopLossPercentage(e.target.value)}
             />
           </div>
 
           {error && (
-            <div className="mb-4 text-sm" style={{ color: "#ef4444" }}>
+            <div className="text-sm text-destructive">
               {error}
             </div>
           )}
 
-          <div className="flex gap-2 mb-4">
-            <button
-              type="button"
-              className="btn btn-secondary"
-              onClick={onClose}
-              style={{ flex: 1 }}
-            >
-              Hủy
-            </button>
-            <button
-              type="submit"
-              className="btn btn-primary"
-              style={{ flex: 1 }}
-            >
-              Lưu
-            </button>
-          </div>
-
-          <div className="mt-4 pt-4 border-t border-gray-200">
-            <button
-              type="button"
-              className="btn w-full"
-              onClick={handleLogout}
-              style={{ backgroundColor: "#ef4444", color: "#ffffff" }}
-            >
-              Đăng xuất
-            </button>
-          </div>
+          <DialogFooter className="flex-col space-y-2 sm:flex-col sm:space-y-2 sm:space-x-0">
+            <div className="flex gap-2 w-full">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={onClose}
+                className="flex-1"
+              >
+                Hủy
+              </Button>
+              <Button
+                type="submit"
+                className="flex-1"
+              >
+                Lưu
+              </Button>
+            </div>
+            
+            <div className="w-full pt-2 border-t">
+              <Button
+                type="button"
+                variant="destructive"
+                onClick={handleLogout}
+                className="w-full"
+              >
+                Đăng xuất
+              </Button>
+            </div>
+          </DialogFooter>
         </form>
-      </div>
-    </div>
+      </DialogContent>
+    </Dialog>
   );
 }
