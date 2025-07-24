@@ -1,6 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
 interface UserFormProps {
   onComplete: (name: string, balance: number) => void;
@@ -35,44 +39,46 @@ export default function UserForm({ onComplete }: UserFormProps) {
   };
 
   return (
-    <div className="card">
-      <h2 className="text-xl font-bold mb-6">Thiết lập tài khoản</h2>
-      <form onSubmit={handleSubmit} className="flex-col gap-4">
-        <div className="mb-4">
-          <label htmlFor="name" className="label">Tên của bạn</label>
-          <input
-            id="name"
-            type="text"
-            className="input"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Nhập tên của bạn"
-          />
-        </div>
-        
-        <div className="mb-4">
-          <label htmlFor="balance" className="label">Số dư tài khoản (USDT)</label>
-          <input
-            id="balance"
-            type="number"
-            step="0.01"
-            className="input"
-            value={balance}
-            onChange={(e) => setBalance(e.target.value)}
-            placeholder="Ví dụ: 1000"
-          />
-        </div>
-        
-        {error && (
-          <div className="mb-4 text-sm" style={{ color: '#ef4444' }}>
-            {error}
+    <Card className="w-full max-w-md mx-auto">
+      <CardHeader className="text-center">
+        <CardTitle className="text-xl">Thiết lập tài khoản</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="name">Tên của bạn</Label>
+            <Input
+              id="name"
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Nhập tên của bạn"
+            />
           </div>
-        )}
-        
-        <button type="submit" className="btn btn-primary">
-          Tiếp tục
-        </button>
-      </form>
-    </div>
+          
+          <div className="space-y-2">
+            <Label htmlFor="balance">Số dư tài khoản (USDT)</Label>
+            <Input
+              id="balance"
+              type="number"
+              step="0.01"
+              value={balance}
+              onChange={(e) => setBalance(e.target.value)}
+              placeholder="Ví dụ: 1000"
+            />
+          </div>
+          
+          {error && (
+            <div className="text-sm text-destructive">
+              {error}
+            </div>
+          )}
+          
+          <Button type="submit" className="w-full">
+            Tiếp tục
+          </Button>
+        </form>
+      </CardContent>
+    </Card>
   );
 }
