@@ -11,6 +11,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useTranslations } from 'next-intl';
 
 interface SettingsModalProps {
   open: boolean;
@@ -37,6 +38,9 @@ export default function SettingsModal({
   onSave,
   onUpdateBalance,
 }: SettingsModalProps) {
+  const t = useTranslations('calculator');
+  const tUserForm = useTranslations('userForm');
+  
   const [riskPercentage, setRiskPercentage] = useState(
     settings.defaultRiskPercentage.toString()
   );
@@ -62,22 +66,22 @@ export default function SettingsModal({
     const balanceValue = parseFloat(newBalance);
 
     if (isNaN(riskValue) || riskValue <= 0) {
-      setError("Mức rủi ro phải là số dương");
+      setError(t('validation.maxRiskRequired'));
       return;
     }
 
     if (isNaN(leverageValue) || leverageValue < 1) {
-      setError("Đòn bẩy phải từ 1 trở lên");
+      setError(t('validation.entryPriceMin'));
       return;
     }
 
     if (isNaN(slValue) || slValue <= 0) {
-      setError("SL phải là số dương");
+      setError(t('validation.stopLossMin'));
       return;
     }
 
     if (isNaN(balanceValue) || balanceValue <= 0) {
-      setError("Số dư phải là số dương");
+      setError(tUserForm('validation.balanceMin'));
       return;
     }
 
@@ -102,12 +106,12 @@ export default function SettingsModal({
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent className="w-[95vw] max-w-md mx-auto">
         <DialogHeader>
-          <DialogTitle>Cài đặt</DialogTitle>
+          <DialogTitle>Settings</DialogTitle>
         </DialogHeader>
 
         <form onSubmit={handleSave} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="settingsBalance">Số dư tài khoản (USDT)</Label>
+            <Label htmlFor="settingsBalance">{tUserForm('balanceLabel')}</Label>
             <Input
               id="settingsBalance"
               type="number"
@@ -119,7 +123,7 @@ export default function SettingsModal({
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="defaultRiskPercentage">Mức rủi ro mặc định (%)</Label>
+            <Label htmlFor="defaultRiskPercentage">{t('maxRisk')} (%) - Default</Label>
             <Input
               id="defaultRiskPercentage"
               type="number"
@@ -131,7 +135,7 @@ export default function SettingsModal({
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="defaultLeverage">Đòn bẩy mặc định (x)</Label>
+            <Label htmlFor="defaultLeverage">Leverage (x) - Default</Label>
             <Input
               id="defaultLeverage"
               type="number"
@@ -143,7 +147,7 @@ export default function SettingsModal({
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="defaultStopLossPercentage">SL mặc định (%)</Label>
+            <Label htmlFor="defaultStopLossPercentage">{t('stopLoss')} (%) - Default</Label>
             <Input
               id="defaultStopLossPercentage"
               type="number"
@@ -168,13 +172,13 @@ export default function SettingsModal({
                 onClick={onClose}
                 className="flex-1"
               >
-                Hủy
+                Cancel
               </Button>
               <Button
                 type="submit"
                 className="flex-1"
               >
-                Lưu
+                Save
               </Button>
             </div>
             
@@ -185,7 +189,7 @@ export default function SettingsModal({
                 onClick={handleLogout}
                 className="w-full"
               >
-                Đăng xuất
+                {t('clear')}
               </Button>
             </div>
           </DialogFooter>

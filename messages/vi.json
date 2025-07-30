@@ -1,0 +1,86 @@
+{
+  "app": {
+    "title": "TradeCalc",
+    "subtitle": "Máy Tính Giá Vào Lệnh Thông Minh",
+    "description": "Công cụ tính toán giá vào lệnh thông minh cho trader"
+  },
+  "header": {
+    "title": "TradeCalc",
+    "subtitle": "Máy Tính Giá Vào Lệnh Thông Minh"
+  },
+  "userForm": {
+    "title": "Thiết lập ban đầu",
+    "nameLabel": "Tên của bạn",
+    "namePlaceholder": "Nhập tên...",
+    "balanceLabel": "Số dư tài khoản",
+    "balancePlaceholder": "Nhập số tiền...",
+    "currencyLabel": "Loại tiền tệ",
+    "submitButton": "Bắt đầu sử dụng",
+    "validation": {
+      "nameRequired": "Vui lòng nhập tên",
+      "balanceRequired": "Vui lòng nhập số dư",
+      "balanceMin": "Số dư phải lớn hơn 0"
+    }
+  },
+  "calculator": {
+    "welcome": "Xin chào",
+    "balance": "Số dư",
+    "maxRisk": "Rủi ro tối đa",
+    "entryPrice": "Giá vào lệnh",
+    "stopLoss": "Stop Loss",
+    "positionSize": "Kích thước vị thế",
+    "calculate": "Tính toán",
+    "reset": "Làm mới",
+    "clear": "Xóa dữ liệu",
+    "validation": {
+      "entryPriceRequired": "Vui lòng nhập giá vào lệnh",
+      "stopLossRequired": "Vui lòng nhập giá stop loss",
+      "maxRiskRequired": "Vui lòng nhập tỷ lệ rủi ro tối đa",
+      "entryPriceMin": "Giá vào lệnh phải lớn hơn 0",
+      "stopLossMin": "Stop loss phải lớn hơn 0",
+      "maxRiskRange": "Tỷ lệ rủi ro phải từ 0.1% đến 100%"
+    },
+    "results": {
+      "positionSize": "Kích thước vị thế",
+      "riskAmount": "Số tiền rủi ro",
+      "shares": "Số cổ phiếu"
+    }
+  },
+  "footer": {
+    "guide": "Hướng dẫn sử dụng",
+    "copyright": "Copyright © 2025 Peterxyjz - Lê Quang Huy"
+  },
+  "guide": {
+    "title": "Hướng dẫn sử dụng TradeCalc",
+    "backHome": "Về trang chủ",
+    "sections": {
+      "introduction": {
+        "title": "Giới thiệu",
+        "content": "TradeCalc là công cụ tính toán giá vào lệnh thông minh giúp trader quản lý rủi ro hiệu quả. Ứng dụng tính toán kích thước vị thế dựa trên số dư tài khoản, mức rủi ro mong muốn và giá stop loss."
+      },
+      "setup": {
+        "title": "Thiết lập ban đầu",
+        "content": "Khi lần đầu sử dụng, bạn cần thiết lập tên và số dư tài khoản. Thông tin này sẽ được lưu trữ cục bộ trên thiết bị của bạn."
+      },
+      "usage": {
+        "title": "Cách sử dụng",
+        "steps": [
+          "Nhập giá vào lệnh dự kiến",
+          "Nhập giá stop loss",
+          "Chọn tỷ lệ rủi ro mong muốn (1-5%)",
+          "Nhấn 'Tính toán' để xem kết quả"
+        ]
+      },
+      "features": {
+        "title": "Tính năng",
+        "list": [
+          "Tính toán kích thước vị thế tự động",
+          "Quản lý rủi ro thông minh",
+          "Giao diện thân thiện với mobile",
+          "Chế độ dark/light mode",
+          "Lưu trữ dữ liệu cục bộ"
+        ]
+      }
+    }
+  }
+}

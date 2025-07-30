@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useTranslations } from 'next-intl';
 import SettingsModal from "./SettingsModal";
 
 interface CalculatorProps {
@@ -26,6 +27,8 @@ export default function Calculator({
   balance,
   onUpdateBalance,
 }: CalculatorProps) {
+  const t = useTranslations('calculator');
+  
   // Settings
   const [showSettings, setShowSettings] = useState(false);
   const [settings, setSettings] = useState<Settings>({
@@ -68,7 +71,7 @@ export default function Calculator({
       const slPercentage = Math.abs(((entry - sl) / entry) * 100);
       setStopLossPercentage(slPercentage.toFixed(2));
     } else {
-      setError("Vui lòng nhập giá Entry và SL hợp lệ");
+      setError(t('validation.entryPriceRequired'));
     }
   };
 
@@ -114,17 +117,17 @@ export default function Calculator({
 
     // Validate inputs
     if (!riskPercentage.trim()) {
-      setError("Vui lòng nhập mức rủi ro");
+      setError(t('validation.maxRiskRequired'));
       return;
     }
 
     if (!leverage.trim()) {
-      setError("Vui lòng nhập đòn bẩy");
+      setError(t('validation.entryPriceRequired'));
       return;
     }
 
     if (!stopLossPercentage.trim()) {
-      setError("Vui lòng nhập SL");
+      setError(t('validation.stopLossRequired'));
       return;
     }
 
@@ -133,17 +136,17 @@ export default function Calculator({
     const slValue = parseFloat(stopLossPercentage);
 
     if (isNaN(rValue) || rValue <= 0) {
-      setError("Mức rủi ro phải là số dương");
+      setError(t('validation.entryPriceMin'));
       return;
     }
 
     if (isNaN(lValue) || lValue <= 0) {
-      setError("Đòn bẩy phải là số dương");
+      setError(t('validation.stopLossMin'));
       return;
     }
 
     if (isNaN(slValue) || slValue <= 0) {
-      setError("SL phải là số dương");
+      setError(t('validation.stopLossMin'));
       return;
     }
 
@@ -167,7 +170,7 @@ export default function Calculator({
     } else {
       const value = customValue || parseFloat(customRiskReduction);
       if (isNaN(value) || value <= 0 || value >= 100) {
-        setError("Vui lòng nhập tỷ lệ giảm hợp lệ (0-100%)");
+        setError(t('validation.maxRiskRange'));
         return;
       }
       reductionFactor = value / 100;
@@ -210,7 +213,7 @@ export default function Calculator({
         size="icon"
         className="absolute top-4 right-4 z-10"
         onClick={() => setShowSettings(true)}
-        aria-label="Mở cài đặt"
+        aria-label={t('reset')}
       >
         <Settings className="h-4 w-4" />
       </Button>
@@ -221,10 +224,10 @@ export default function Calculator({
             <CardTitle className="text-xl">TradeCalc</CardTitle>
             <div className="text-right text-sm">
               <div className="font-medium">
-                Xin chào, <strong>{userName}</strong>
+                {t('welcome')}, <strong>{userName}</strong>
               </div>
               <div className="text-muted-foreground">
-                Số dư:{" "}
+                {t('balance')}:{" "}
                 <span className="text-primary font-semibold">
                   {balance.toFixed(2)} USDT
                 </span>
@@ -236,7 +239,7 @@ export default function Calculator({
         <CardContent>
           <form onSubmit={handleCalculate} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="riskPercentage">Mức rủi ro (%)</Label>
+              <Label htmlFor="riskPercentage">{t('maxRisk')} (%)</Label>
               <Input
                 id="riskPercentage"
                 type="number"
@@ -297,7 +300,7 @@ export default function Calculator({
                   <Card className="p-3">
                     <div className="space-y-3">
                       <div className="space-y-2">
-                        <Label htmlFor="entryPriceInput">Giá Entry</Label>
+                        <Label htmlFor="entryPriceInput">{t('entryPrice')}</Label>
                         <Input
                           id="entryPriceInput"
                           type="number"
@@ -309,7 +312,7 @@ export default function Calculator({
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="stopLossPriceInput">Giá SL</Label>
+                        <Label htmlFor="stopLossPriceInput">{t('stopLoss')}</Label>
                         <Input
                           id="stopLossPriceInput"
                           type="number"
@@ -339,7 +342,7 @@ export default function Calculator({
                           className="flex-1"
                           size="sm"
                         >
-                          Xóa
+                          {t('clear')}
                         </Button>
                       </div>
                     </div>
@@ -351,7 +354,7 @@ export default function Calculator({
             {error && <div className="text-sm text-destructive">{error}</div>}
 
             <Button type="submit" className="w-full">
-              Tính giá vào lệnh
+              {t('calculate')}
             </Button>
 
             {entryPrice !== null && (
@@ -361,7 +364,7 @@ export default function Calculator({
                 </CardHeader>
                 <CardContent>
                   <div className="text-lg mb-4">
-                    <span className="font-medium">Giá vào lệnh: </span>
+                    <span className="font-medium">{t('entryPrice')}: </span>
                     <span className="text-primary font-bold">
                       {getDisplayEntryPrice()?.toFixed(2)} USDT
                     </span>

@@ -1,0 +1,86 @@
+{
+  "app": {
+    "title": "TradeCalc",
+    "subtitle": "Smart Trade Entry Calculator",
+    "description": "Smart trading entry price calculator tool for traders"
+  },
+  "header": {
+    "title": "TradeCalc",
+    "subtitle": "Smart Trade Entry Calculator"
+  },
+  "userForm": {
+    "title": "Initial Setup",
+    "nameLabel": "Your Name",
+    "namePlaceholder": "Enter your name...",
+    "balanceLabel": "Account Balance",
+    "balancePlaceholder": "Enter amount...",
+    "currencyLabel": "Currency",
+    "submitButton": "Start Using",
+    "validation": {
+      "nameRequired": "Please enter your name",
+      "balanceRequired": "Please enter balance",
+      "balanceMin": "Balance must be greater than 0"
+    }
+  },
+  "calculator": {
+    "welcome": "Hello",
+    "balance": "Balance",
+    "maxRisk": "Max Risk",
+    "entryPrice": "Entry Price",
+    "stopLoss": "Stop Loss",
+    "positionSize": "Position Size",
+    "calculate": "Calculate",
+    "reset": "Reset",
+    "clear": "Clear Data",
+    "validation": {
+      "entryPriceRequired": "Please enter entry price",
+      "stopLossRequired": "Please enter stop loss price",
+      "maxRiskRequired": "Please enter max risk percentage",
+      "entryPriceMin": "Entry price must be greater than 0",
+      "stopLossMin": "Stop loss must be greater than 0",
+      "maxRiskRange": "Risk percentage must be between 0.1% and 100%"
+    },
+    "results": {
+      "positionSize": "Position Size",
+      "riskAmount": "Risk Amount",
+      "shares": "Number of Shares"
+    }
+  },
+  "footer": {
+    "guide": "User Guide",
+    "copyright": "Copyright © 2025 Peterxyjz - Le Quang Huy"
+  },
+  "guide": {
+    "title": "TradeCalc User Guide",
+    "backHome": "Back to Home",
+    "sections": {
+      "introduction": {
+        "title": "Introduction",
+        "content": "TradeCalc is a smart entry price calculator tool that helps traders manage risk effectively. The application calculates position size based on account balance, desired risk level, and stop loss price."
+      },
+      "setup": {
+        "title": "Initial Setup",
+        "content": "When using for the first time, you need to set up your name and account balance. This information will be stored locally on your device."
+      },
+      "usage": {
+        "title": "How to Use",
+        "steps": [
+          "Enter expected entry price",
+          "Enter stop loss price",
+          "Select desired risk percentage (1-5%)",
+          "Click 'Calculate' to see results"
+        ]
+      },
+      "features": {
+        "title": "Features",
+        "list": [
+          "Automatic position size calculation",
+          "Smart risk management",
+          "Mobile-friendly interface",
+          "Dark/light mode",
+          "Local data storage"
+        ]
+      }
+    }
+  }
+}
