@@ -38,8 +38,7 @@ export default function SettingsModal({
   onSave,
   onUpdateBalance,
 }: SettingsModalProps) {
-  const t = useTranslations('calculator');
-  const tUserForm = useTranslations('userForm');
+  const t = useTranslations('settings');
   
   const [riskPercentage, setRiskPercentage] = useState(
     settings.defaultRiskPercentage.toString()
@@ -66,22 +65,22 @@ export default function SettingsModal({
     const balanceValue = parseFloat(newBalance);
 
     if (isNaN(riskValue) || riskValue <= 0) {
-      setError(t('validation.maxRiskRequired'));
+      setError(t('validation.riskPositive'));
       return;
     }
 
     if (isNaN(leverageValue) || leverageValue < 1) {
-      setError(t('validation.entryPriceMin'));
+      setError(t('validation.leverageMin'));
       return;
     }
 
     if (isNaN(slValue) || slValue <= 0) {
-      setError(t('validation.stopLossMin'));
+      setError(t('validation.stopLossPositive'));
       return;
     }
 
     if (isNaN(balanceValue) || balanceValue <= 0) {
-      setError(tUserForm('validation.balanceMin'));
+      setError(t('validation.balancePositive'));
       return;
     }
 
@@ -106,12 +105,12 @@ export default function SettingsModal({
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent className="w-[95vw] max-w-md mx-auto">
         <DialogHeader>
-          <DialogTitle>Settings</DialogTitle>
+          <DialogTitle>{t('title')}</DialogTitle>
         </DialogHeader>
 
         <form onSubmit={handleSave} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="settingsBalance">{tUserForm('balanceLabel')}</Label>
+            <Label htmlFor="settingsBalance">{t('balance')}</Label>
             <Input
               id="settingsBalance"
               type="number"
@@ -123,7 +122,7 @@ export default function SettingsModal({
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="defaultRiskPercentage">{t('maxRisk')} (%) - Default</Label>
+            <Label htmlFor="defaultRiskPercentage">{t('defaultRisk')}</Label>
             <Input
               id="defaultRiskPercentage"
               type="number"
@@ -135,7 +134,7 @@ export default function SettingsModal({
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="defaultLeverage">Leverage (x) - Default</Label>
+            <Label htmlFor="defaultLeverage">{t('defaultLeverage')}</Label>
             <Input
               id="defaultLeverage"
               type="number"
@@ -147,7 +146,7 @@ export default function SettingsModal({
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="defaultStopLossPercentage">{t('stopLoss')} (%) - Default</Label>
+            <Label htmlFor="defaultStopLossPercentage">{t('defaultStopLoss')}</Label>
             <Input
               id="defaultStopLossPercentage"
               type="number"
@@ -172,13 +171,13 @@ export default function SettingsModal({
                 onClick={onClose}
                 className="flex-1"
               >
-                Cancel
+                {t('cancel')}
               </Button>
               <Button
                 type="submit"
                 className="flex-1"
               >
-                Save
+                {t('save')}
               </Button>
             </div>
             
@@ -189,7 +188,7 @@ export default function SettingsModal({
                 onClick={handleLogout}
                 className="w-full"
               >
-                {t('clear')}
+                {t('logout')}
               </Button>
             </div>
           </DialogFooter>

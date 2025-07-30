@@ -12,13 +12,13 @@
     "title": "Initial Setup",
     "nameLabel": "Your Name",
     "namePlaceholder": "Enter your name...",
-    "balanceLabel": "Account Balance",
-    "balancePlaceholder": "Enter amount...",
+    "balanceLabel": "Account Balance (USDT)",
+    "balancePlaceholder": "e.g.: 1000",
     "currencyLabel": "Currency",
     "submitButton": "Start Using",
     "validation": {
       "nameRequired": "Please enter your name",
-      "balanceRequired": "Please enter balance",
+      "balanceRequired": "Please enter a valid account balance",
       "balanceMin": "Balance must be greater than 0"
     }
   },
@@ -26,24 +26,55 @@
     "welcome": "Hello",
     "balance": "Balance",
     "maxRisk": "Max Risk",
+    "leverage": "Leverage",
     "entryPrice": "Entry Price",
     "stopLoss": "Stop Loss",
     "positionSize": "Position Size",
-    "calculate": "Calculate",
+    "calculate": "Calculate Entry Price",
     "reset": "Reset",
-    "clear": "Clear Data",
-    "validation": {
-      "entryPriceRequired": "Please enter entry price",
-      "stopLossRequired": "Please enter stop loss price",
-      "maxRiskRequired": "Please enter max risk percentage",
-      "entryPriceMin": "Entry price must be greater than 0",
-      "stopLossMin": "Stop loss must be greater than 0",
-      "maxRiskRange": "Risk percentage must be between 0.1% and 100%"
+    "clear": "Clear",
+    "settings": "Settings",
+    "simple": "Simple",
+    "advanced": "Advanced",
+    "calculateSL": "Calculate SL %",
+    "results": "Results",
+    "reducePosition": "Reduce Position",
+    "custom": "Custom",
+    "reductionPercentage": "Reduction Percentage (%)",
+    "reductionNote": "Reduced {percentage} from original position",
+    "placeholders": {
+      "risk": "e.g.: 2",
+      "leverage": "e.g.: 10",
+      "stopLoss": "e.g.: 2",
+      "entryPrice": "e.g.: 100.5",
+      "stopLossPrice": "e.g.: 98.5",
+      "reduction": "e.g.: 30"
     },
-    "results": {
-      "positionSize": "Position Size",
-      "riskAmount": "Risk Amount",
-      "shares": "Number of Shares"
+    "validation": {
+      "entryPriceRequired": "Please enter valid Entry and SL prices",
+      "stopLossRequired": "Please enter stop loss",
+      "maxRiskRequired": "Please enter risk level",
+      "leverageRequired": "Please enter leverage",
+      "entryPriceMin": "Risk level must be a positive number",
+      "stopLossMin": "SL must be a positive number",
+      "leverageMin": "Leverage must be 1 or higher",
+      "maxRiskRange": "Please enter valid reduction percentage (0-100%)"
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "balance": "Account Balance (USDT)",
+    "defaultRisk": "Default Risk Level (%)",
+    "defaultLeverage": "Default Leverage (x)",
+    "defaultStopLoss": "Default SL (%)",
+    "cancel": "Cancel",
+    "save": "Save",
+    "logout": "Logout",
+    "validation": {
+      "riskPositive": "Risk level must be a positive number",
+      "leverageMin": "Leverage must be 1 or higher",
+      "stopLossPositive": "SL must be a positive number",
+      "balancePositive": "Balance must be a positive number"
     }
   },
   "footer": {
@@ -53,6 +84,12 @@
   "guide": {
     "title": "TradeCalc User Guide",
     "backHome": "Back to Home",
+    "gettingStarted": "Getting Started",
+    "basicCalculation": "Basic Calculation",
+    "advancedFeatures": "Advanced Features",
+    "settingsGuide": "Settings",
+    "tips": "Usage Tips",
+    "faq": "FAQ",
     "sections": {
       "introduction": {
         "title": "Introduction",
@@ -60,26 +97,127 @@
       },
       "setup": {
         "title": "Initial Setup",
-        "content": "When using for the first time, you need to set up your name and account balance. This information will be stored locally on your device."
+        "content": "When using for the first time, you need to set up your name and account balance. This information will be stored locally on your device.",
+        "steps": [
+          "Enter your name",
+          "Enter account balance (USDT)",
+          "Click 'Start Using'"
+        ]
       },
       "usage": {
         "title": "How to Use",
+        "description": "After setup, you'll see the main calculation screen:",
         "steps": [
-          "Enter expected entry price",
-          "Enter stop loss price",
-          "Select desired risk percentage (1-5%)",
-          "Click 'Calculate' to see results"
+          "Enter risk level (%) - e.g.: 2",
+          "Enter leverage (x) - e.g.: 10",
+          "Enter SL (%) - e.g.: 2",
+          "Click 'Calculate Entry Price'"
         ]
       },
+      "parameters": {
+        "title": "Parameter Meanings",
+        "risk": {
+          "title": "Risk Level (%)",
+          "description": "% of account balance you're willing to lose if order hits SL",
+          "example": "Account 1000 USDT, risk 2% = willing to lose 20 USDT"
+        },
+        "leverage": {
+          "title": "Leverage (x)",
+          "description": "Multiplier from the trading exchange",
+          "example": "10x = can trade with 10 times the amount"
+        },
+        "stopLoss": {
+          "title": "SL (%)",
+          "description": "% price can move against you before cutting losses",
+          "example": "SL 2% = if price drops 2%, automatically cut losses"
+        }
+      },
+      "example": {
+        "title": "Specific Example",
+        "balance": "Balance: 1,000 USDT",
+        "risk": "Risk: 2% (= 20 USDT)",
+        "leverage": "Leverage: 10x",
+        "stopLoss": "SL: 2%",
+        "result": "Result: Entry Price 100 USDT"
+      },
       "features": {
-        "title": "Features",
-        "list": [
-          "Automatic position size calculation",
-          "Smart risk management",
-          "Mobile-friendly interface",
-          "Dark/light mode",
-          "Local data storage"
+        "title": "Advanced Features",
+        "slCalculation": {
+          "title": "Calculate SL% from actual prices",
+          "description": "Instead of entering SL%, you can calculate from specific Entry and SL prices:",
+          "steps": [
+            "Switch to 'Advanced' tab",
+            "Enter Entry price (e.g.: 100.5)",
+            "Enter SL price (e.g.: 98.5)",
+            "Click 'Calculate SL%'",
+            "SL% will be automatically calculated and filled in"
+          ]
+        },
+        "positionReduction": {
+          "title": "Reduce Position Size",
+          "description": "After calculation, you can reduce position if it feels too large:",
+          "steps": [
+            "Click '0.5R' to reduce by 50% immediately",
+            "Or click 'Custom' and enter desired % reduction",
+            "Entry price will update automatically"
+          ]
+        }
+      },
+      "settings": {
+        "title": "Settings",
+        "access": "Click the ⚙️ icon in the top right corner",
+        "options": [
+          "Account Balance: Update when there are changes",
+          "Default Risk Level: Default value when opening app",
+          "Default Leverage: Commonly used leverage",
+          "Default SL: Commonly used SL%"
+        ],
+        "tip": "Set appropriate default values to avoid entering them repeatedly"
+      },
+      "tips": {
+        "title": "Effective Usage Tips",
+        "dos": [
+          "Don't risk more than 2-5% of account per trade",
+          "Update account balance regularly",
+          "Check results before entering trades",
+          "Use 0.5R when uncertain"
+        ],
+        "donts": [
+          "Don't use excessive leverage without experience",
+          "Don't ignore stop loss due to emotions",
+          "Don't trade entire account balance",
+          "Don't constantly change SL"
+        ],
+        "beginners": [
+          "Risk: 1-2% per trade",
+          "Leverage: 5-10x",
+          "SL: 2-5%",
+          "Focus on learning risk management"
         ]
+      },
+      "faq": {
+        "title": "Frequently Asked Questions",
+        "positionTooLarge": {
+          "question": "Position size too large?",
+          "answer": "Reduce risk % or increase SL %. Or use position reduction feature."
+        },
+        "positionTooSmall": {
+          "question": "Position size too small?",
+          "answer": "Increase risk % (within safe limits) or decrease SL %."
+        },
+        "dataLoss": {
+          "question": "Lost settings data?",
+          "answer": "Data is stored in browser. Avoid clearing cache or using incognito mode."
+        },
+        "dataSafety": {
+          "question": "Is data safe?",
+          "answer": "Completely safe. All data is stored only on your device, not sent to servers."
+        }
+      },
+      "conclusion": {
+        "title": "Happy Trading!",
+        "message": "Discipline and risk management are more important than profit. Stay safe! 📚✨",
+        "cta": "Start using TradeCalc"
       }
     }
   }

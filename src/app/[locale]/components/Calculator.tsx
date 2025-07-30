@@ -122,7 +122,7 @@ export default function Calculator({
     }
 
     if (!leverage.trim()) {
-      setError(t('validation.entryPriceRequired'));
+      setError(t('validation.leverageRequired'));
       return;
     }
 
@@ -141,7 +141,7 @@ export default function Calculator({
     }
 
     if (isNaN(lValue) || lValue <= 0) {
-      setError(t('validation.stopLossMin'));
+      setError(t('validation.leverageMin'));
       return;
     }
 
@@ -192,7 +192,7 @@ export default function Calculator({
     if (reducedEntryPrice === null) return null;
     const percentage =
       reductionType === "0.5R" ? "50%" : `${customRiskReduction}%`;
-    return `Giảm ${percentage} so với position gốc`;
+    return t('reductionNote', { percentage });
   };
 
   const handleSaveSettings = (newSettings: Settings) => {
@@ -213,7 +213,7 @@ export default function Calculator({
         size="icon"
         className="absolute top-4 right-4 z-10"
         onClick={() => setShowSettings(true)}
-        aria-label={t('reset')}
+        aria-label={t('settings')}
       >
         <Settings className="h-4 w-4" />
       </Button>
@@ -247,7 +247,7 @@ export default function Calculator({
                 min="0.1"
                 value={riskPercentage}
                 onChange={(e) => setRiskPercentage(e.target.value)}
-                placeholder="Ví dụ: 2"
+                placeholder={t('placeholders.risk')}
               />
               {parseFloat(riskPercentage) > 0 && (
                 <div className="text-sm text-muted-foreground">
@@ -261,7 +261,7 @@ export default function Calculator({
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="leverage">Đòn bẩy (x)</Label>
+              <Label htmlFor="leverage">{t('leverage')} (x)</Label>
               <Input
                 id="leverage"
                 type="number"
@@ -269,19 +269,19 @@ export default function Calculator({
                 min="1"
                 value={leverage}
                 onChange={(e) => setLeverage(e.target.value)}
-                placeholder="Ví dụ: 10"
+                placeholder={t('placeholders.leverage')}
               />
             </div>
 
             <div className="space-y-2">
               <div className="flex justify-between items-center">
-                <Label htmlFor="stopLossPercentage">SL (%)</Label>
+                <Label htmlFor="stopLossPercentage">{t('stopLoss')} (%)</Label>
               </div>
 
               <Tabs defaultValue="simple" className="w-full">
                 <TabsList className="grid w-full grid-cols-2">
-                  <TabsTrigger value="simple">Đơn giản</TabsTrigger>
-                  <TabsTrigger value="advanced">Nâng cao</TabsTrigger>
+                  <TabsTrigger value="simple">{t('simple')}</TabsTrigger>
+                  <TabsTrigger value="advanced">{t('advanced')}</TabsTrigger>
                 </TabsList>
                 
                 <TabsContent value="simple" className="mt-2">
@@ -292,7 +292,7 @@ export default function Calculator({
                     min="0.01"
                     value={stopLossPercentage}
                     onChange={(e) => setStopLossPercentage(e.target.value)}
-                    placeholder="Ví dụ: 2"
+                    placeholder={t('placeholders.stopLoss')}
                   />
                 </TabsContent>
                 
@@ -308,7 +308,7 @@ export default function Calculator({
                           min="0"
                           value={entryPriceInput}
                           onChange={(e) => setEntryPriceInput(e.target.value)}
-                          placeholder="Ví dụ: 100.5"
+                          placeholder={t('placeholders.entryPrice')}
                         />
                       </div>
                       <div className="space-y-2">
@@ -320,7 +320,7 @@ export default function Calculator({
                           min="0"
                           value={stopLossPriceInput}
                           onChange={(e) => setStopLossPriceInput(e.target.value)}
-                          placeholder="Ví dụ: 98.5"
+                          placeholder={t('placeholders.stopLossPrice')}
                         />
                       </div>
                       <div className="flex gap-2">
@@ -330,7 +330,7 @@ export default function Calculator({
                           className="flex-1"
                           size="sm"
                         >
-                          Tính SL %
+                          {t('calculateSL')}
                         </Button>
                         <Button
                           type="button"
@@ -360,7 +360,7 @@ export default function Calculator({
             {entryPrice !== null && (
               <Card className="mt-4">
                 <CardHeader>
-                  <CardTitle className="text-lg">Kết quả</CardTitle>
+                  <CardTitle className="text-lg">{t('results')}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="text-lg mb-4">
@@ -378,7 +378,7 @@ export default function Calculator({
                   {showPositionOptions && (
                     <div className="space-y-3 pt-3 border-t">
                       <Label className="text-base font-semibold">
-                        Giảm Position
+                        {t('reducePosition')}
                       </Label>
 
                       <div className="flex gap-2">
@@ -405,14 +405,14 @@ export default function Calculator({
                           className="flex-1"
                           size="sm"
                         >
-                          Tùy chỉnh
+                          {t('custom')}
                         </Button>
                       </div>
 
                       {reductionType === "custom" && (
                         <div className="space-y-2">
                           <Label htmlFor="customRiskReduction">
-                            Tỷ lệ giảm (%)
+                            {t('reductionPercentage')}
                           </Label>
                           <Input
                             id="customRiskReduction"
@@ -430,7 +430,7 @@ export default function Calculator({
                                 setReducedEntryPrice(null);
                               }
                             }}
-                            placeholder="Ví dụ: 30"
+                            placeholder={t('placeholders.reduction')}
                           />
                         </div>
                       )}

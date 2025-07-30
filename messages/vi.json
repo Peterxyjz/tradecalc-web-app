@@ -12,38 +12,69 @@
     "title": "Thiết lập ban đầu",
     "nameLabel": "Tên của bạn",
     "namePlaceholder": "Nhập tên...",
-    "balanceLabel": "Số dư tài khoản",
-    "balancePlaceholder": "Nhập số tiền...",
+    "balanceLabel": "Số dư tài khoản (USDT)",
+    "balancePlaceholder": "Ví dụ: 1000",
     "currencyLabel": "Loại tiền tệ",
     "submitButton": "Bắt đầu sử dụng",
     "validation": {
       "nameRequired": "Vui lòng nhập tên",
-      "balanceRequired": "Vui lòng nhập số dư",
+      "balanceRequired": "Vui lòng nhập số dư tài khoản hợp lệ",
       "balanceMin": "Số dư phải lớn hơn 0"
     }
   },
   "calculator": {
     "welcome": "Xin chào",
     "balance": "Số dư",
-    "maxRisk": "Rủi ro tối đa",
+    "maxRisk": "Mức rủi ro",
+    "leverage": "Đòn bẩy",
     "entryPrice": "Giá vào lệnh",
     "stopLoss": "Stop Loss",
     "positionSize": "Kích thước vị thế",
-    "calculate": "Tính toán",
+    "calculate": "Tính giá vào lệnh",
     "reset": "Làm mới",
-    "clear": "Xóa dữ liệu",
-    "validation": {
-      "entryPriceRequired": "Vui lòng nhập giá vào lệnh",
-      "stopLossRequired": "Vui lòng nhập giá stop loss",
-      "maxRiskRequired": "Vui lòng nhập tỷ lệ rủi ro tối đa",
-      "entryPriceMin": "Giá vào lệnh phải lớn hơn 0",
-      "stopLossMin": "Stop loss phải lớn hơn 0",
-      "maxRiskRange": "Tỷ lệ rủi ro phải từ 0.1% đến 100%"
+    "clear": "Xóa",
+    "settings": "Cài đặt",
+    "simple": "Đơn giản",
+    "advanced": "Nâng cao",
+    "calculateSL": "Tính SL %",
+    "results": "Kết quả",
+    "reducePosition": "Giảm Position",
+    "custom": "Tùy chỉnh",
+    "reductionPercentage": "Tỷ lệ giảm (%)",
+    "reductionNote": "Giảm {percentage} so với position gốc",
+    "placeholders": {
+      "risk": "Ví dụ: 2",
+      "leverage": "Ví dụ: 10",
+      "stopLoss": "Ví dụ: 2",
+      "entryPrice": "Ví dụ: 100.5",
+      "stopLossPrice": "Ví dụ: 98.5",
+      "reduction": "Ví dụ: 30"
     },
-    "results": {
-      "positionSize": "Kích thước vị thế",
-      "riskAmount": "Số tiền rủi ro",
-      "shares": "Số cổ phiếu"
+    "validation": {
+      "entryPriceRequired": "Vui lòng nhập giá Entry và SL hợp lệ",
+      "stopLossRequired": "Vui lòng nhập SL",
+      "maxRiskRequired": "Vui lòng nhập mức rủi ro",
+      "leverageRequired": "Vui lòng nhập đòn bẩy",
+      "entryPriceMin": "Mức rủi ro phải là số dương",
+      "stopLossMin": "SL phải là số dương",
+      "leverageMin": "Đòn bẩy phải từ 1 trở lên",
+      "maxRiskRange": "Vui lòng nhập tỷ lệ giảm hợp lệ (0-100%)"
+    }
+  },
+  "settings": {
+    "title": "Cài đặt",
+    "balance": "Số dư tài khoản (USDT)",
+    "defaultRisk": "Mức rủi ro mặc định (%)",
+    "defaultLeverage": "Đòn bẩy mặc định (x)",
+    "defaultStopLoss": "SL mặc định (%)",
+    "cancel": "Hủy",
+    "save": "Lưu",
+    "logout": "Đăng xuất",
+    "validation": {
+      "riskPositive": "Mức rủi ro phải là số dương",
+      "leverageMin": "Đòn bẩy phải từ 1 trở lên",
+      "stopLossPositive": "SL phải là số dương",
+      "balancePositive": "Số dư phải là số dương"
     }
   },
   "footer": {
@@ -52,7 +83,13 @@
   },
   "guide": {
     "title": "Hướng dẫn sử dụng TradeCalc",
-    "backHome": "Về trang chủ",
+    "backHome": "Quay lại",
+    "gettingStarted": "Bắt đầu sử dụng",
+    "basicCalculation": "Tính toán cơ bản",
+    "advancedFeatures": "Tính năng nâng cao",
+    "settingsGuide": "Cài đặt",
+    "tips": "Mẹo sử dụng hiệu quả",
+    "faq": "Câu hỏi thường gặp",
     "sections": {
       "introduction": {
         "title": "Giới thiệu",
@@ -60,26 +97,127 @@
       },
       "setup": {
         "title": "Thiết lập ban đầu",
-        "content": "Khi lần đầu sử dụng, bạn cần thiết lập tên và số dư tài khoản. Thông tin này sẽ được lưu trữ cục bộ trên thiết bị của bạn."
+        "content": "Khi lần đầu sử dụng, bạn cần thiết lập tên và số dư tài khoản. Thông tin này sẽ được lưu trữ cục bộ trên thiết bị của bạn.",
+        "steps": [
+          "Nhập tên của bạn",
+          "Nhập số dư tài khoản (USDT)",
+          "Nhấn 'Bắt đầu sử dụng'"
+        ]
       },
       "usage": {
         "title": "Cách sử dụng",
+        "description": "Sau khi thiết lập, bạn sẽ thấy màn hình tính toán chính:",
         "steps": [
-          "Nhập giá vào lệnh dự kiến",
-          "Nhập giá stop loss",
-          "Chọn tỷ lệ rủi ro mong muốn (1-5%)",
-          "Nhấn 'Tính toán' để xem kết quả"
+          "Nhập mức rủi ro (%) - ví dụ: 2",
+          "Nhập đòn bẩy (x) - ví dụ: 10", 
+          "Nhập SL (%) - ví dụ: 2",
+          "Nhấn 'Tính giá vào lệnh'"
         ]
       },
+      "parameters": {
+        "title": "Ý nghĩa các thông số",
+        "risk": {
+          "title": "Mức rủi ro (%)",
+          "description": "% số dư tài khoản bạn sẵn sàng mất nếu lệnh chạm SL",
+          "example": "Tài khoản 1000 USDT, rủi ro 2% = sẵn sàng mất 20 USDT"
+        },
+        "leverage": {
+          "title": "Đòn bẩy (x)",
+          "description": "Hệ số nhân từ sàn giao dịch",
+          "example": "10x = có thể trade với số tiền gấp 10 lần"
+        },
+        "stopLoss": {
+          "title": "SL (%)",
+          "description": "% giá có thể đi ngược lại trước khi cắt lỗ",
+          "example": "SL 2% = nếu giá giảm 2% thì tự động cắt lỗ"
+        }
+      },
+      "example": {
+        "title": "Ví dụ cụ thể",
+        "balance": "Số dư: 1,000 USDT",
+        "risk": "Rủi ro: 2% (= 20 USDT)",
+        "leverage": "Đòn bẩy: 10x", 
+        "stopLoss": "SL: 2%",
+        "result": "Kết quả: Giá vào lệnh 100 USDT"
+      },
       "features": {
-        "title": "Tính năng",
-        "list": [
-          "Tính toán kích thước vị thế tự động",
-          "Quản lý rủi ro thông minh",
-          "Giao diện thân thiện với mobile",
-          "Chế độ dark/light mode",
-          "Lưu trữ dữ liệu cục bộ"
+        "title": "Tính năng nâng cao",
+        "slCalculation": {
+          "title": "Tính SL% từ giá thực tế",
+          "description": "Thay vì nhập SL%, bạn có thể tính từ giá Entry và giá SL cụ thể:",
+          "steps": [
+            "Chuyển sang tab 'Nâng cao'",
+            "Nhập giá Entry (ví dụ: 100.5)",
+            "Nhập giá SL (ví dụ: 98.5)",
+            "Nhấn 'Tính SL%'",
+            "SL% sẽ được tự động tính và điền vào"
+          ]
+        },
+        "positionReduction": {
+          "title": "Giảm Position Size",
+          "description": "Sau khi tính xong, bạn có thể giảm position nếu cảm thấy quá lớn:",
+          "steps": [
+            "Nhấn '0.5R' để giảm 50% ngay lập tức",
+            "Hoặc nhấn 'Tùy chỉnh' và nhập % muốn giảm",
+            "Giá vào lệnh sẽ cập nhật tự động"
+          ]
+        }
+      },
+      "settings": {
+        "title": "Cài đặt",
+        "access": "Nhấn vào biểu tượng ⚙️ ở góc trên bên phải",
+        "options": [
+          "Số dư tài khoản: Cập nhật khi có thay đổi",
+          "Mức rủi ro mặc định: Giá trị sẵn có khi mở app",
+          "Đòn bẩy mặc định: Đòn bẩy thường dùng",
+          "SL mặc định: SL% thường dùng"
+        ],
+        "tip": "Thiết lập giá trị mặc định phù hợp để không phải nhập lại nhiều lần"
+      },
+      "tips": {
+        "title": "Mẹo sử dụng hiệu quả",
+        "dos": [
+          "Không risk quá 2-5% account cho 1 lệnh",
+          "Cập nhật số dư account định kỳ",
+          "Kiểm tra kết quả trước khi vào lệnh",
+          "Sử dụng 0.5R khi không chắc chắn"
+        ],
+        "donts": [
+          "Không dùng leverage quá cao nếu chưa có kinh nghiệm",
+          "Không bỏ qua stop loss vì cảm xúc",
+          "Không trade hết số dư account",
+          "Không thay đổi SL liên tục"
+        ],
+        "beginners": [
+          "Risk: 1-2% mỗi lệnh",
+          "Leverage: 5-10x",
+          "SL: 2-5%",
+          "Tập trung học quản lý rủi ro"
         ]
+      },
+      "faq": {
+        "title": "Câu hỏi thường gặp",
+        "positionTooLarge": {
+          "question": "Position size quá lớn?",
+          "answer": "Giảm % risk hoặc tăng % SL. Hoặc sử dụng tính năng giảm position."
+        },
+        "positionTooSmall": {
+          "question": "Position size quá nhỏ?",
+          "answer": "Tăng % risk (trong giới hạn an toàn) hoặc giảm % SL."
+        },
+        "dataLoss": {
+          "question": "Mất dữ liệu cài đặt?",
+          "answer": "Dữ liệu lưu trong browser. Tránh xóa cache hoặc dùng chế độ ẩn danh."
+        },
+        "dataSafety": {
+          "question": "Dữ liệu có an toàn không?",
+          "answer": "Hoàn toàn an toàn. Tất cả dữ liệu chỉ lưu trong máy của bạn, không gửi lên server."
+        }
+      },
+      "conclusion": {
+        "title": "Chúc bạn trading thành công!",
+        "message": "Discipline và risk management quan trọng hơn profit. Stay safe! 📚✨",
+        "cta": "Bắt đầu sử dụng TradeCalc"
       }
     }
   }
