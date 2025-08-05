@@ -49,6 +49,7 @@ export default function Calculator({
   // Advanced mode for calculating SL%
   const [entryPriceInput, setEntryPriceInput] = useState("");
   const [stopLossPriceInput, setStopLossPriceInput] = useState("");
+  const [activeTab, setActiveTab] = useState("simple");
 
   // Result
   const [entryPrice, setEntryPrice] = useState<number | null>(null);
@@ -70,6 +71,11 @@ export default function Calculator({
     if (!isNaN(entry) && !isNaN(sl) && entry > 0 && sl > 0 && entry !== sl) {
       const slPercentage = Math.abs(((entry - sl) / entry) * 100);
       setStopLossPercentage(slPercentage.toFixed(2));
+      // Switch back to simple tab after calculation
+      setActiveTab("simple");
+      // Clear advanced inputs
+      setEntryPriceInput("");
+      setStopLossPriceInput("");
     } else {
       setError(t('validation.entryPriceRequired'));
     }
@@ -278,7 +284,7 @@ export default function Calculator({
                 <Label htmlFor="stopLossPercentage">{t('stopLoss')} (%)</Label>
               </div>
 
-              <Tabs defaultValue="simple" className="w-full">
+              <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
                 <TabsList className="grid w-full grid-cols-2">
                   <TabsTrigger value="simple">{t('simple')}</TabsTrigger>
                   <TabsTrigger value="advanced">{t('advanced')}</TabsTrigger>
